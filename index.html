@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room Puzzel - Chopin</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+        body { 
+            font-family: 'Great Vibes', cursive; 
+            text-align: center; 
+            margin-top: 50px; 
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg/1280px-Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg') no-repeat center center fixed; 
+            background-size: cover; 
+            color: black;
+        }
+
+        h2 { 
+            font-size: 2em; 
+            background: rgba(255, 255, 255, 0.7); 
+            display: inline-block; 
+            padding: 10px; 
+            border-radius: 10px;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        input {
+            font-size: 1.2em;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            width: 250px;
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border: none;
+            background: darkred;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: darkgoldenrod;
+        }
+
+        #route {
+            display: none; /* Zorgt ervoor dat het standaard verborgen is */
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: black;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body onload="hideRoute()"> <!-- Dit zorgt ervoor dat de route altijd verborgen start -->
+
+    <h2>Voer de code in</h2>
+    
+    <div class="input-container">
+        <input type="text" id="codeInput" placeholder="Voer de code in" onkeypress="handleKeyPress(event)">
+        <button onclick="checkCode()">Bevestigen</button>
+    </div>
+    
+    <p id="route">✅ Correct! Volg de route:...</p>
+
+    <audio id="chopinMusic" src="https://www.mfiles.co.uk/mp3-downloads/chopin-nocturne-op9-no2.mp3"></audio>
+
+    <script>
+        function hideRoute() {
+            document.getElementById("route").style.display = "none"; // Verbergt de route bij het laden
+        }
+
+        function checkCode() {
+            let input = document.getElementById("codeInput").value.toUpperCase();
+            if (input === "CHOPIN") {
+                document.getElementById("route").style.display = "block";
+                document.getElementById("chopinMusic").play();
+            } else {
+                alert("❌ Foute code, probeer opnieuw!");
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                checkCode();
+            }
+        }
+    </script>
+
+</body>
+</html>
