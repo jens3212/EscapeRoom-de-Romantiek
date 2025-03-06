@@ -56,8 +56,8 @@
             background: darkgoldenrod;
         }
 
-        #route {
-            display: none; /* Zorgt ervoor dat het standaard verborgen is */
+        .route {
+            display: none;
             margin-top: 20px;
             font-size: 1.5em;
             font-weight: bold;
@@ -75,37 +75,52 @@
         }
     </style>
 </head>
-<body onload="hideRoute()"> <!-- Dit zorgt ervoor dat de route altijd verborgen start -->
+<body onload="hideRoutes()"> <!-- Dit zorgt ervoor dat alle routes altijd verborgen starten -->
 
-    <h2>Voer de code in</h2>
-    
+    <h2>Voer de codes in</h2>
+
     <div class="input-container">
-        <input type="text" id="codeInput" placeholder="Voer de code in" onkeypress="handleKeyPress(event)">
-        <button onclick="checkCode()">Bevestigen</button>
+        <input type="text" id="codeInput2" placeholder="Voer de code in" onkeypress="handleKeyPress(event, 'codeInput2', '1892', 'route2')">
+        <button onclick="checkCode('codeInput2', '1892', 'route2')">Bevestigen</button>
     </div>
-    
-    <p id="route">✅ Correct! Volg de route:...</p>
+    <p id="route2" class="route">✅ Correct! Volg de route: Het jaar 1892...</p>
+
+    <div class="input-container">
+        <input type="text" id="codeInput" placeholder="Voer de code in" onkeypress="handleKeyPress(event, 'codeInput', 'CHOPIN', 'route1')">
+        <button onclick="checkCode('codeInput', 'CHOPIN', 'route1')">Bevestigen</button>
+    </div>
+    <p id="route1" class="route">✅ Correct! Volg de route: Chopin's melodie...</p>
+
+    <div class="input-container">
+        <input type="text" id="codeInput3" placeholder="Voer de code in" onkeypress="handleKeyPress(event, 'codeInput3', 'JOHN CONSTABLE', 'route3')">
+        <button onclick="checkCode('codeInput3', 'JOHN CONSTABLE', 'route3')">Bevestigen</button>
+    </div>
+    <p id="route3" class="route">✅ Correct! Volg de route: De kunst van John Constable...</p>
 
     <audio id="chopinMusic" src="https://www.mfiles.co.uk/mp3-downloads/chopin-nocturne-op9-no2.mp3"></audio>
 
     <script>
-        function hideRoute() {
-            document.getElementById("route").style.display = "none"; // Verbergt de route bij het laden
+        function hideRoutes() {
+            document.querySelectorAll('.route').forEach(route => {
+                route.style.display = "none";
+            });
         }
 
-        function checkCode() {
-            let input = document.getElementById("codeInput").value.toUpperCase();
-            if (input === "CHOPIN") {
-                document.getElementById("route").style.display = "block";
-                document.getElementById("chopinMusic").play();
+        function checkCode(inputId, correctCode, routeId) {
+            let input = document.getElementById(inputId).value.toUpperCase();
+            if (input === correctCode) {
+                document.getElementById(routeId).style.display = "block";
+                if (correctCode === "CHOPIN") {
+                    document.getElementById("chopinMusic").play();
+                }
             } else {
                 alert("❌ Foute code, probeer opnieuw!");
             }
         }
 
-        function handleKeyPress(event) {
+        function handleKeyPress(event, inputId, correctCode, routeId) {
             if (event.key === "Enter") {
-                checkCode();
+                checkCode(inputId, correctCode, routeId);
             }
         }
     </script>
