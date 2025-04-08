@@ -75,7 +75,7 @@
         }
     </style>
 </head>
-<body onload="hideRoutes()"> <!-- Dit zorgt ervoor dat alle routes altijd verborgen starten -->
+<body onload="hideRoutes()">
 
     <h2>Voer de codes in</h2>
 
@@ -83,19 +83,19 @@
         <input type="text" id="codeInput2" placeholder="Voer de code in" onkeypress="handleKeyPress(event, 'codeInput2', '1892', 'route2')">
         <button onclick="checkCode('codeInput2', '1892', 'route2')">Bevestigen</button>
     </div>
-    <p id="route2" class="route">✅ Correct! Volg de route: Het jaar 1892...</p>
+    <p id="route2" class="route">✅ Correct! Volg de route: G12,E2,E1</p>
 
     <div class="input-container">
         <input type="text" id="codeInput" placeholder="Voer de code in" onkeypress="handleKeyPress(event, 'codeInput', 'CHOPIN', 'route1')">
         <button onclick="checkCode('codeInput', 'CHOPIN', 'route1')">Bevestigen</button>
     </div>
-    <p id="route1" class="route">✅ Correct! Volg de route: Chopin's melodie...</p>
+    <p id="route1" class="route">✅ Correct! Volg de route: J4,J5,J6</p>
 
     <div class="input-container">
         <input type="text" id="codeInput3" placeholder="Voer de code in" onkeypress="handleKeyPress(event, 'codeInput3', 'JOHN CONSTABLE', 'route3')">
         <button onclick="checkCode('codeInput3', 'JOHN CONSTABLE', 'route3')">Bevestigen</button>
     </div>
-    <p id="route3" class="route">✅ Correct! Volg de route: De kunst van John Constable...</p>
+    <p id="route3" class="route">✅ Correct! Volg de route: K14, K15, L15, M15, M14</p>
 
     <audio id="chopinMusic" src="https://www.mfiles.co.uk/mp3-downloads/chopin-nocturne-op9-no2.mp3"></audio>
 
